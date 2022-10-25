@@ -7,10 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { CountCardComponent } from './count-card/count-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CountCardComponent
   ],
   imports: [
     BrowserModule,
