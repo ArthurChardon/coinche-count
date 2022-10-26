@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { MatDialog } from '@angular/material/dialog';
+import { DialogScoreComponent } from '../dialogs/dialog-score/dialog-score.component'
+import { DialogsService } from '../dialogs/dialogs.service';
 @Component({
   selector: 'app-count-card',
   templateUrl: './count-card.component.html',
@@ -11,9 +13,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CountCardComponent implements OnInit {
   @Input() color = 'red';
   @Input() title = 'Team';
-  count = 0;
+  count: number = 0;
 
-  constructor() { }
+  _dialogsService: DialogsService;
+
+  constructor(public dialog: MatDialog, dialogsService: DialogsService) {
+    this._dialogsService = dialogsService;
+  }
 
   ngOnInit(): void {
   }
@@ -26,4 +32,17 @@ export class CountCardComponent implements OnInit {
     this.count += 10;
   }
 
+  openDialog() {
+    this._dialogsService.openDialog();
+    const dialogRef = this.dialog.open(DialogScoreComponent, {
+      data: {title: this.title},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this._dialogsService.closeDialog();
+      if(parseInt(result)) {
+        this.count += parseInt(result);
+      }
+    });
+  }
 }
