@@ -1,10 +1,12 @@
-<h1 mat-dialog-title>{{data.title}}</h1>
+<h1 mat-dialog-title>{{data.title}} | {{data.count}}</h1>
 <div mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <input matInput [(ngModel)]="toAdd" type="number" pattern="[0-9]" cdkFocusInitial>
-  </mat-form-field>
+    <form class="example-container" [style.fontSize.px]="25">
+        <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="toAdd" [ngModelOptions]="{standalone: true}" type="number" pattern="[0-9]" cdkFocusInitial>
+        </mat-form-field>
+    </form>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="toAdd">Ok</button>
+<div mat-dialog-actions class="dialog-actions">
+  <button mat-flat-button (click)="onNoClick()">Cancel</button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="toAdd">Add</button>
 </div>

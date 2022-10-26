@@ -35,7 +35,7 @@ export class CountCardComponent implements OnInit {
   openDialog() {
     this._dialogsService.openDialog();
     const dialogRef = this.dialog.open(DialogScoreComponent, {
-      data: {title: this.title},
+      data: {title: this.title, count: this.count},
     });
 
     dialogRef.afterClosed().subscribe(result => {
