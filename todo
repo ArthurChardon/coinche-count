@@ -1,0 +1,7 @@
+- ajouter fonctionnalité reset zero
+- ajouter fonctionnalité sauvegarde dans le cache
+- ajouter fonctionnalité d'historique
+- ajouter fonctionnalité ajout de carte de count
+
+
+- automatiser le build vers docs/ et avec la ligne : <base href="coinche-count"> dans l'index.html

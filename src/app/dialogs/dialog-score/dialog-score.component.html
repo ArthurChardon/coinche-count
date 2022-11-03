@@ -1,12 +1,15 @@
-<h1 mat-dialog-title>{{data.title}} | {{data.count}}</h1>
-<div mat-dialog-content>
-    <form class="example-container" [style.fontSize.px]="25">
-        <mat-form-field appearance="fill">
+<h1 mat-dialog-title cdkFocusInitial>{{data.title}} | {{data.count}}</h1>
+<div mat-dialog-content class="dialog-content">
+    <div *ngIf="isMode(ModeEnum.PICK)" class="choices">
+        <button *ngFor="let choice of choices" mat-stroked-button [mat-dialog-close]="choice">{{choice}}</button>
+    </div>
+    <form *ngIf="isMode(ModeEnum.TYPE)" class="form-field" [style.fontSize.px]="25">
+        <mat-form-field appearance="fill" class="score-field">
             <input matInput [(ngModel)]="toAdd" [ngModelOptions]="{standalone: true}" type="number" pattern="[0-9]" cdkFocusInitial>
         </mat-form-field>
     </form>
 </div>
-<div mat-dialog-actions class="dialog-actions">
+<div *ngIf="isMode(ModeEnum.TYPE)" mat-dialog-actions class="dialog-actions">
   <button mat-flat-button (click)="onNoClick()">Cancel</button>
   <button mat-flat-button color="primary" [mat-dialog-close]="toAdd">Add</button>
 </div>

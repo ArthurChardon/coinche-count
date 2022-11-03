@@ -2,11 +2,11 @@
     <span class="card-title">{{title}}</span>
 </div>
 <div class="body-card">
-    <div  class="card-minus card-ope" matRipple [matRippleUnbounded]="true" (click)="decrement()">
+    <div  class="card-minus card-ope" matRipple [matRippleUnbounded]="true" [matRippleRadius]="25" (click)="decrement()">
         <span class="card-ope-symbol">-</span>
     </div>
     <span class="card-count" (click)="openDialog()">{{count}}</span>
-    <div class="card-plus card-ope" matRipple [matRippleUnbounded]="true" (click)="increment()">
+    <div class="card-plus card-ope" matRipple [matRippleUnbounded]="true" [matRippleRadius]="25" (click)="increment()">
         <span class="card-ope-symbol">+</span>
     </div>
 </div>

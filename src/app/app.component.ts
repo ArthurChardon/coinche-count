@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DialogsService } from './dialogs/dialogs.service';
+import { DialogsService, DialogScoreMode } from './dialogs/dialogs.service';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +9,29 @@ import { DialogsService } from './dialogs/dialogs.service';
 export class AppComponent {
   title = 'coinche-count';
 
-  constructor( dialogService: DialogsService) {
+  ModeEnum = DialogScoreMode;
+
+  constructor( private _dialogsService: DialogsService) {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     window.addEventListener('resize', () => {
-      if(!dialogService.isDialogOpened()) {
+      if(!_dialogsService.isDialogOpened()) {
         let vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
       }
     });
+  }
+  
+  setDisplayMode(mode: DialogScoreMode) {
+    this._dialogsService.setMode(mode);
+  }
+
+  
+  getMode(): DialogScoreMode {
+    return this._dialogsService.mode;
+  }
+
+  isMode(mode: DialogScoreMode) {
+    return this.getMode() === mode;
   }
 }

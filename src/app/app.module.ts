@@ -12,6 +12,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { CountCardComponent } from './count-card/count-card.component';
 import { DialogScoreComponent } from './dialogs/dialog-score/dialog-score.component';
@@ -33,7 +34,8 @@ import { DialogScoreComponent } from './dialogs/dialog-score/dialog-score.compon
     MatRippleModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

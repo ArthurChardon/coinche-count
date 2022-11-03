@@ -1,11 +1,27 @@
 <div class="app-container">
   <div class="app-header">
-    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
-      <mat-icon>add_box</mat-icon>
+    <button mat-icon-button color="primary" [matMenuTriggerFor]="dialogMode">
+      <mat-icon *ngIf="isMode(ModeEnum.PICK)">exposure_plus_1</mat-icon>
+      <mat-icon *ngIf="isMode(ModeEnum.TYPE)">edit</mat-icon>
     </button>
-    <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
-      <mat-icon>more_vert</mat-icon>
-    </button>
+    <mat-menu #dialogMode="matMenu">
+      <button mat-menu-item (click)="setDisplayMode(ModeEnum.PICK)">
+        <mat-icon>exposure_plus_1</mat-icon>
+        <span>Choices</span>
+      </button>
+      <button mat-menu-item (click)="setDisplayMode(ModeEnum.TYPE)">
+        <mat-icon>edit</mat-icon>
+        <span>Input</span>
+      </button>
+    </mat-menu>
+    <div hidden>
+      <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+        <mat-icon>add_box</mat-icon>
+      </button>
+      <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
   </div>
   <div class="app-body">
     <app-count-card color="#fa5246"></app-count-card>
