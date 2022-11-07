@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DialogsService, DialogScoreMode } from './dialogs/dialogs.service';
+import { CountService } from './count.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
 
   ModeEnum = DialogScoreMode;
 
-  constructor( private _dialogsService: DialogsService) {
+  constructor( private _dialogsService: DialogsService, private _countService: CountService) {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     window.addEventListener('resize', () => {
@@ -33,5 +34,9 @@ export class AppComponent {
 
   isMode(mode: DialogScoreMode) {
     return this.getMode() === mode;
+  }
+
+  cancelLastEntry() {
+    this._countService.cancelLastEntry();
   }
 }

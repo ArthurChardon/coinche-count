@@ -52,4 +52,11 @@ export class CountService {
     const score = this.scores.getValue().get(player)
     return score ? score : 0;
   }
+
+  cancelLastEntry() {
+      const lastEntry = this.historique.pop();
+      if(lastEntry) {
+        this.updateScore(lastEntry[0], -lastEntry[1]);
+      }
+  }
 }
