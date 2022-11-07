@@ -29,13 +29,11 @@ export class CountService {
   updateScore(player: string, entry: number) {
     if (this.scores.getValue().has(player)) {
       const currentScore = this.getScore(player);
-      if(currentScore) {
-        const newScores = this.scores.getValue().set(player, currentScore + entry);
-        this.scores.next(newScores);
-      }
+      const newScores = this.scores.getValue().set(player, currentScore + entry);
+      this.scores.next(newScores);
     }
     else {
-      const newScores = this.scores.getValue().set(player,  entry);
+      const newScores = this.scores.getValue().set(player, entry);
       this.scores.next(newScores);
     }
     localStorage.setItem(player, this.getScore(player).toString());
