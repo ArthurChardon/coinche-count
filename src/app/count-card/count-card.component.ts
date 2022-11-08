@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogScoreComponent } from '../dialogs/dialog-score/dialog-score.component'
 import { DialogsService } from '../dialogs/dialogs.service';
@@ -11,7 +11,7 @@ import { CountService } from '../count.service'
     '[style.background-color]' : 'color'
   }
 })
-export class CountCardComponent implements OnInit {
+export class CountCardComponent implements OnInit, AfterViewChecked {
   @Input() color = 'red';
   @Input() title = 'Team';
   count: number = 0;
@@ -25,6 +25,10 @@ export class CountCardComponent implements OnInit {
       const score = data.get(this.title);
       this.count = score ? score : 0;
     })
+  }
+
+  ngAfterViewChecked(): void {
+    this.scaleFontSize();
   }
 
   decrement() {
@@ -47,5 +51,21 @@ export class CountCardComponent implements OnInit {
         this._countService.registerEntry(parseInt(result), this.title);
       }
     });
+  }
+
+  resetScore() {
+    this._countService.resetScore(this.title);
+  }
+
+  scaleFontSize() {
+    var container = document.getElementById(this.title+"-count");
+    if(container) {
+      container.style.fontSize = "100%";
+      if(container.parentElement) {
+        if (container.clientWidth > container.parentElement.clientWidth * 0.6) {
+          container.style.fontSize = "70%";
+        }
+      }
+    }
   }
 }

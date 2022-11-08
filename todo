@@ -1,6 +1,7 @@
 - ajouter fonctionnalité reset zero
 - ajouter fonctionnalité ajout de carte de count
+- voir historique avec reset (fucked up l'undo)
 
+animate change font size count-card
 
-- automatiser le build avec la ligne : <base href="coinche-count"> dans l'index.html
 ng build --base-href coinche-count

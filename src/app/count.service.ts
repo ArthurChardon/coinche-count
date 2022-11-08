@@ -39,6 +39,18 @@ export class CountService {
     localStorage.setItem(player, this.getScore(player).toString());
   }
 
+  setScore(player: string, entry: number) {
+    if (this.scores.getValue().has(player)) {
+      const newScores = this.scores.getValue().set(player, entry);
+      this.scores.next(newScores);
+    }
+    else {
+      const newScores = this.scores.getValue().set(player, entry);
+      this.scores.next(newScores);
+    }
+    localStorage.setItem(player, this.getScore(player).toString());
+  }
+
   getFromStorage(player: string) {
     const playerScore = localStorage.getItem(player);
     if(playerScore) {
@@ -56,5 +68,9 @@ export class CountService {
       if(lastEntry) {
         this.updateScore(lastEntry[0], -lastEntry[1]);
       }
+  }
+
+  resetScore(player: string) {
+    this.setScore(player, 0);
   }
 }
