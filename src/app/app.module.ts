@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,10 +15,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 
-import { CountCardComponent } from './count-card/count-card.component';
+import { CountCardComponent } from './cards-main/count-card/count-card.component';
 import { DialogScoreComponent } from './dialogs/dialog-score/dialog-score.component';
 import { HistoriqueComponent } from './historique/historique.component';
 import { CardsMainComponent } from './cards-main/cards-main.component';
+import { HelpTabComponent } from './help-tab/help-tab.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +27,15 @@ import { CardsMainComponent } from './cards-main/cards-main.component';
     CountCardComponent,
     DialogScoreComponent,
     HistoriqueComponent,
-    CardsMainComponent
+    CardsMainComponent,
+    HelpTabComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule ,
+    ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
     MatRippleModule,

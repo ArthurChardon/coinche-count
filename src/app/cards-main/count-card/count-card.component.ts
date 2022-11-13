@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogScoreComponent } from '../dialogs/dialog-score/dialog-score.component'
-import { DialogsService } from '../dialogs/dialogs.service';
-import { CountService } from '../count.service'
+import { DialogScoreComponent } from '../../dialogs/dialog-score/dialog-score.component'
+import { DialogsService } from '../../dialogs/dialogs.service';
+import { CountService } from '../../count.service'
 @Component({
   selector: 'app-count-card',
   templateUrl: './count-card.component.html',
   styleUrls: ['./count-card.component.scss'],
-  host : {
-    '[style.background-color]' : 'color'
+  host: {
+    '[style.background-color]': 'color'
   }
 })
 export class CountCardComponent implements OnInit, AfterViewChecked {
@@ -42,12 +42,12 @@ export class CountCardComponent implements OnInit, AfterViewChecked {
   openDialog() {
     this._dialogsService.openDialog();
     const dialogRef = this.dialog.open(DialogScoreComponent, {
-      data: {title: this.title, count: this.count},
+      data: { title: this.title, count: this.count },
     });
 
     dialogRef.afterClosed().subscribe(result => {
       this._dialogsService.closeDialog();
-      if(parseInt(result)) {
+      if (parseInt(result)) {
         this._countService.registerEntry(parseInt(result), this.title);
       }
     });
@@ -58,10 +58,10 @@ export class CountCardComponent implements OnInit, AfterViewChecked {
   }
 
   scaleFontSize() {
-    var container = document.getElementById(this.title+"-count");
-    if(container) {
+    var container = document.getElementById(this.title + "-count");
+    if (container) {
       container.style.fontSize = "100%";
-      if(container.parentElement) {
+      if (container.parentElement) {
         if (container.clientWidth > container.parentElement.clientWidth * 0.6) {
           container.style.fontSize = "70%";
         }

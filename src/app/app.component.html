@@ -1,5 +1,5 @@
 <mat-tab-group headerPosition="below" backgroundColor="primary">
-  <mat-tab label="Cards"> 
+  <mat-tab label="Cards">
     <ng-template mat-tab-label>
       <mat-icon class="example-tab-icon">dataset</mat-icon>
     </ng-template>
@@ -13,6 +13,14 @@
     </ng-template>
     <div class="app-container">
       <app-historique></app-historique>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">help</mat-icon>
+    </ng-template>
+    <div class="app-container">
+      <app-help-tab></app-help-tab>
     </div>
   </mat-tab>
 </mat-tab-group>
