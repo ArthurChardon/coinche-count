@@ -2,39 +2,14 @@
 
 .app-container {
     height: 100%;
-    height: calc(var(--vh, 1vh) * 100);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.app-header {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-
+    height: calc(var(--vh, 1vh) * 95);
     background-color: $main-blue;
-
-    button {
-        margin: 5px;
-    }
+    position: relative;
 }
 
-.app-body {
-    width: 100%;
+app-cards-main {
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: $main-blue;
-}
-
-.app-footer {
-    width: 100%;
-    display: flex;
-    background-color: $main-blue;
-
-    button {
-        margin: 5px;
-    }
+    justify-content: space-around;
 }

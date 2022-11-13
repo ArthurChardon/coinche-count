@@ -1,7 +1,8 @@
-- ajouter fonctionnalité reset zero
-- ajouter fonctionnalité ajout de carte de count
+- ajouter fonctionnalité ajout de carte de count ? (autre appli)
 - voir historique avec reset (fucked up l'undo)
+- manuel des règles du jeu
 
 animate change font size count-card
+
 
 ng build --base-href coinche-count

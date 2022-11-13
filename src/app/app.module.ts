@@ -13,15 +13,20 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { CountCardComponent } from './count-card/count-card.component';
 import { DialogScoreComponent } from './dialogs/dialog-score/dialog-score.component';
+import { HistoriqueComponent } from './historique/historique.component';
+import { CardsMainComponent } from './cards-main/cards-main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountCardComponent,
-    DialogScoreComponent
+    DialogScoreComponent,
+    HistoriqueComponent,
+    CardsMainComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import { DialogScoreComponent } from './dialogs/dialog-score/dialog-score.compon
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

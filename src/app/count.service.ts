@@ -18,7 +18,7 @@ export class CountService {
   }
 
   removeLastEntry() {
-    if(this.historique.length) {
+    if (this.historique.length) {
       let lastEntry = this.historique[-1];
       lastEntry[1] = -lastEntry[1];
       this.updateScore(...lastEntry)
@@ -53,10 +53,10 @@ export class CountService {
 
   getFromStorage(player: string) {
     const playerScore = localStorage.getItem(player);
-    if(playerScore) {
+    if (playerScore) {
       this.scores.getValue().set(player, parseInt(playerScore));
     }
-  } 
+  }
 
   getScore(player: string) {
     const score = this.scores.getValue().get(player)
@@ -64,13 +64,21 @@ export class CountService {
   }
 
   cancelLastEntry() {
-      const lastEntry = this.historique.pop();
-      if(lastEntry) {
-        this.updateScore(lastEntry[0], -lastEntry[1]);
-      }
+    const lastEntry = this.historique.pop();
+    if (lastEntry) {
+      this.updateScore(lastEntry[0], -lastEntry[1]);
+    }
   }
 
   resetScore(player: string) {
     this.setScore(player, 0);
+  }
+
+  resetScores() {
+    this.historique = [];
+    const keys = this.scores.getValue().keys();
+    for (let k of keys) {
+      this.setScore(k, 0);
+    }
   }
 }

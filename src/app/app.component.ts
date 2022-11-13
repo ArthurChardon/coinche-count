@@ -22,19 +22,6 @@ export class AppComponent {
       }
     });
   }
-  
-  setDisplayMode(mode: DialogScoreMode) {
-    this._dialogsService.setMode(mode);
-  }
-
-  
-  getMode(): DialogScoreMode {
-    return this._dialogsService.mode;
-  }
-
-  isMode(mode: DialogScoreMode) {
-    return this.getMode() === mode;
-  }
 
   cancelLastEntry() {
     this._countService.cancelLastEntry();

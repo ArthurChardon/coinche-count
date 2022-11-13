@@ -13,7 +13,7 @@ import { CountService } from '../count.service'
 })
 export class CountCardComponent implements OnInit, AfterViewChecked {
   @Input() color = 'red';
-  @Input() title = 'Team';
+  @Input() title = 'Title';
   count: number = 0;
 
   constructor(public dialog: MatDialog, private _dialogsService: DialogsService, private _countService: CountService) {

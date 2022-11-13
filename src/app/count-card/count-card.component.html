@@ -2,10 +2,10 @@
     <span class="card-title">{{title}}</span>
     <button mat-icon-button color="white" (click)="resetScore()">
         <mat-icon>restart_alt</mat-icon>
-      </button>
+    </button>
 </div>
 <div class="body-card">
-    <div  class="card-minus card-ope" matRipple [matRippleUnbounded]="true" [matRippleRadius]="25" (click)="decrement()">
+    <div class="card-minus card-ope" matRipple [matRippleUnbounded]="true" [matRippleRadius]="25" (click)="decrement()">
         <span class="card-ope-symbol">-</span>
     </div>
     <span [id]="title+'-count'" class="card-count" (click)="openDialog()">{{count}}</span>
