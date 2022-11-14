@@ -1,0 +1,12 @@
+.help-container {
+    display: flex;
+    flex-direction: column;
+    color: white;
+
+    .help-entry {
+        button {
+            margin-left: 5px;
+            margin-right: 15px;
+        }
+    }
+}
