@@ -1,30 +1,41 @@
-import { Component, OnInit, Input, AfterViewInit, AfterViewChecked } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  AfterViewInit,
+  AfterViewChecked,
+} from '@angular/core';
+import { first } from 'rxjs';
+
 import { MatDialog } from '@angular/material/dialog';
-import { DialogScoreComponent } from '../../dialogs/dialog-score/dialog-score.component'
+import { DialogScoreComponent } from '../../dialogs/dialog-score/dialog-score.component';
 import { DialogsService } from '../../dialogs/dialogs.service';
-import { CountService } from '../../count.service'
+import { CountService } from '../../count.service';
 @Component({
   selector: 'app-count-card',
   templateUrl: './count-card.component.html',
   styleUrls: ['./count-card.component.scss'],
   host: {
-    '[style.background-color]': 'color'
-  }
+    '[style.background-color]': 'color',
+  },
 })
 export class CountCardComponent implements OnInit, AfterViewChecked {
   @Input() color = 'red';
-  @Input() title = 'Title';
+  @Input() cardTitle = 'Title';
   count: number = 0;
 
-  constructor(public dialog: MatDialog, private _dialogsService: DialogsService, private _countService: CountService) {
-  }
+  constructor(
+    public dialog: MatDialog,
+    private _dialogsService: DialogsService,
+    private _countService: CountService
+  ) {}
 
   ngOnInit(): void {
-    this._countService.getFromStorage(this.title);
+    this._countService.getFromStorage(this.cardTitle);
     this._countService.scores.subscribe((data) => {
-      const score = data.get(this.title);
+      const score = data.get(this.cardTitle);
       this.count = score ? score : 0;
-    })
+    });
   }
 
   ngAfterViewChecked(): void {
@@ -32,38 +43,42 @@ export class CountCardComponent implements OnInit, AfterViewChecked {
   }
 
   decrement() {
-    this._countService.registerEntry(-10, this.title);
+    this._countService.registerEntry(-10, this.cardTitle);
   }
 
   increment() {
-    this._countService.registerEntry(10, this.title);
+    this._countService.registerEntry(10, this.cardTitle);
   }
 
   openDialog() {
     this._dialogsService.openDialog();
     const dialogRef = this.dialog.open(DialogScoreComponent, {
-      data: { title: this.title, count: this.count },
+      autoFocus: '.score-input',
+      data: { title: this.cardTitle, count: this.count },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this._dialogsService.closeDialog();
-      if (parseInt(result)) {
-        this._countService.registerEntry(parseInt(result), this.title);
-      }
-    });
+    dialogRef
+      .afterClosed()
+      .pipe(first())
+      .subscribe((result) => {
+        this._dialogsService.closeDialog();
+        if (parseInt(result)) {
+          this._countService.registerEntry(parseInt(result), this.cardTitle);
+        }
+      });
   }
 
   resetScore() {
-    this._countService.resetScore(this.title);
+    this._countService.resetScore(this.cardTitle);
   }
 
   scaleFontSize() {
-    var container = document.getElementById(this.title + "-count");
+    var container = document.getElementById(this.cardTitle + '-count');
     if (container) {
-      container.style.fontSize = "100%";
+      container.style.fontSize = '100%';
       if (container.parentElement) {
         if (container.clientWidth > container.parentElement.clientWidth * 0.6) {
-          container.style.fontSize = "70%";
+          container.style.fontSize = '70%';
         }
       }
     }

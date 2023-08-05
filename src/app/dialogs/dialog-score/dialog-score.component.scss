@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 ::ng-deep .mat-form-field-flex{
    padding: 0 .75em !important;
 }
@@ -14,12 +16,13 @@
 }
 
 .choices {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: space-around;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
 
-   button {
+   .choice-button {
       margin: 0.5em 0.2em;
+      background-color: $main-white;
+      color: black;
    }
 
 }

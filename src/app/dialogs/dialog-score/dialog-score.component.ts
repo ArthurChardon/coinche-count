@@ -1,6 +1,5 @@
-import { Component, OnInit, Inject, Type } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder } from '@angular/forms';
 import { DialogsService, DialogScoreMode } from '../dialogs.service';
 
 export interface DialogData {
@@ -11,10 +10,9 @@ export interface DialogData {
 @Component({
   selector: 'dialog-score',
   templateUrl: './dialog-score.component.html',
-  styleUrls: ['./dialog-score.component.scss']
+  styleUrls: ['./dialog-score.component.scss'],
 })
 export class DialogScoreComponent implements OnInit {
-
   toAdd = '';
   choices: number[] = [];
 
@@ -23,12 +21,11 @@ export class DialogScoreComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogScoreComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private _formBuilder: FormBuilder,
-    private _dialogsService: DialogsService,
-  ) { }
+    private _dialogsService: DialogsService
+  ) {}
 
   ngOnInit(): void {
-    for(let i = 80; i < 170; i+=10) {
+    for (let i = 80; i < 170; i += 10) {
       this.choices.push(i);
     }
     this.choices.push(250);
@@ -45,5 +42,4 @@ export class DialogScoreComponent implements OnInit {
   isMode(mode: DialogScoreMode) {
     return this.getMode() === mode;
   }
-
 }

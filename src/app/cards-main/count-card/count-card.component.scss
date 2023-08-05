@@ -45,6 +45,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        user-select: none;
 
         &.card-plus {
             //padding-left: 25px;
