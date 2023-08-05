@@ -1,14 +1,13 @@
 <h1 mat-dialog-title>{{ data.title }} | {{ data.count }}</h1>
 <div mat-dialog-content class="dialog-content">
   <div *ngIf="isMode(ModeEnum.PICK)" class="choices">
-    <button
+    <div
       *ngFor="let choice of choices"
-      class="choice-button"
-      mat-stroked-button
+      class="choice-button flex justify-center items-center"
       [mat-dialog-close]="choice"
     >
       {{ choice }}
-    </button>
+    </div>
   </div>
   <form
     *ngIf="isMode(ModeEnum.TYPE)"

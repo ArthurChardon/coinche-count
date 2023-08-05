@@ -14,7 +14,7 @@ export interface DialogData {
 })
 export class DialogScoreComponent implements OnInit {
   toAdd = '';
-  choices: number[] = [];
+  choices: string[] = [];
 
   ModeEnum = DialogScoreMode;
 
@@ -26,9 +26,9 @@ export class DialogScoreComponent implements OnInit {
 
   ngOnInit(): void {
     for (let i = 80; i < 170; i += 10) {
-      this.choices.push(i);
+      this.choices.push('+' + i);
     }
-    this.choices.push(250);
+    this.choices.push('+250');
   }
 
   onNoClick(): void {

@@ -20,9 +20,19 @@
    grid-template-columns: repeat(3, 1fr);
 
    .choice-button {
-      margin: 0.5em 0.2em;
-      background-color: $main-white;
-      color: black;
+      margin: 0.5em 0.5em;
+      min-width: 3em;
+      min-height: 3em;
+      width: 3em;
+      height: 3em;
+
+      border: solid 2px $main-red;
+      border-radius: 5px;
+      background-color: $main-blue;
+      color: $main-white;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: Roboto, 'Helvetica Neue', sans-serif;
    }
 
 }
